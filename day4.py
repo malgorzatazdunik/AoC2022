@@ -30,6 +30,30 @@ def pair_contains_other_2(data):
     return number_of_pairs
 
 
+def pair_contains_other_better_2(data):
+    number_of_pairs = 0
+    for row in data:
+        x, y = [[int(j) for j in i.split("-")] for i in row.split(",")]
+        if x[0] > y[1] or x[1] < y[0] or y[0] > x[1] or y[1] < x[0]:
+            continue
+        else:
+            number_of_pairs += 1
+
+    return number_of_pairs
+
+
+def pair_contains_other_better_1(data):
+    number_of_pairs = 0
+    for row in data:
+        x, y = [[int(j) for j in i.split("-")] for i in row.split(",")]
+        if y[0] <= x[0] <= y[1] and y[0] <= x[1] <= y[1] or x[0] <= y[0] <= x[1] and x[0] <= y[1] <= x[1]:
+            number_of_pairs += 1
+
+    return number_of_pairs
+
+
 print(pair_contains_other(data))
 print(pair_contains_other_2(data))
+print(pair_contains_other_better_1(data))
+print(pair_contains_other_better_2(data))
 
